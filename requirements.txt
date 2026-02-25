@@ -9,3 +9,6 @@ scrapy
 
 # WordPress API and Network Requests
 requests
+
+# image prossesing
+Pillow

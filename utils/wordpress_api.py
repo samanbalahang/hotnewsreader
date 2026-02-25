@@ -1,5 +1,6 @@
 import requests
 from requests.auth import HTTPBasicAuth
+import os
 
 class WordPressAuth:
     def __init__(self, base_url):
@@ -26,8 +27,46 @@ class WordPressAuth:
         except:
             return None
 
+    def upload_local_image(self, file_path):
+        """Uploads a locally stored image file to WordPress Media library."""
+        if not os.path.exists(file_path):
+            print(f"❌ File not found: {file_path}")
+            return None
+        
+        try:
+            filename = os.path.basename(file_path)
+            # Detect content type (basic check)
+            content_type = 'image/jpeg'
+            if filename.lower().endswith('.png'): content_type = 'image/png'
+            elif filename.lower().endswith('.webp'): content_type = 'image/webp'
+
+            headers = {
+                'Content-Disposition': f'attachment; filename={filename}',
+                'Content-Type': content_type,
+            }
+
+            with open(file_path, 'rb') as img_file:
+                binary_data = img_file.read()
+
+            response = self.session.post(
+                f"{self.api_url}/media",
+                headers=headers,
+                data=binary_data,
+                auth=self.auth,
+                timeout=30
+            )
+            
+            if response.status_code == 201:
+                return response.json().get('id')
+            else:
+                print(f"❌ Upload Failed: {response.text}")
+                return None
+        except Exception as e:
+            print(f"❌ Error during local upload: {e}")
+            return None
+
     def upload_image_from_url(self, image_url):
-        """آپلود تصویر در وردپرس و دریافت ID"""
+        """Original method: Downloads from URL and uploads directly (no resizing)"""
         if not image_url or image_url == 'None':
             return None
         try:
@@ -71,3 +110,21 @@ class WordPressAuth:
     def logout(self):
         self.session.close()
         return True
+    
+    def post_exists_by_title(self, title):
+            """Checks if a post title already exists in WordPress."""
+            # We search for the title. status=any includes drafts and published posts.
+            url = f"{self.base_url}/wp-json/wp/v2/posts?search={title}&status=publish,draft,future,pending,private"
+            
+            try:
+                response = self.session.get(url)
+                if response.status_code == 200:
+                    posts = response.json()
+                    for p in posts:
+                        # 'search' is fuzzy, so we check for an exact match of the rendered title
+                        if p['title']['rendered'].strip() == title.strip():
+                            return p['id']  # Found it! Return the ID
+                return None
+            except Exception as e:
+                print(f"⚠️ Error checking duplicate title: {e}")
+                return None
