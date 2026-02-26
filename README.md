@@ -1,171 +1,6 @@
 ## RSS-to-WP Automator
 # 📰 News Automation Pipeline
 
-This project is a Python-based automation tool that monitors **RSS feeds**, **scrapes** full article content from news websites, and **uploads** the results to a **WordPress** site using the REST API.
-
-## 🛠️ Environment Setup (VS Code)
-
-To ensure the project runs correctly and doesn't interfere with other Python projects on your computer, you should use a **Virtual Environment (venv)**.
-
-### 1. Create the Environment
-
-1. Open your project folder in **VS Code**.
-2. Open the terminal (Press `Ctrl + ` ` or go to **Terminal > New Terminal**).
-3. Type the following command and press Enter:
-```bash
-python -m venv venv
-
-```
-
-
-*This creates a folder named `venv` inside your project.*
-
-### 2. Activate the Environment
-
-You must "enter" the environment so VS Code knows to use it.
-
-* **Windows:**
-```bash
-.\venv\Scripts\activate
-
-```
-
-
-* **Mac/Linux:**
-```bash
-source venv/bin/activate
-
-```
-
-
-
-> **Tip:** If successful, you will see `(venv)` appear in parentheses at the start of your terminal command line.
-
-### 3. Install Requirements
-
-Once the environment is active, install all the necessary libraries defined in `requirements.txt`:
-
-```bash
-pip install -r requirements.txt
-
-```
-
-### 4. Select Interpreter in VS Code
-
-1. Press `Ctrl + Shift + P` (or `Cmd + Shift + P` on Mac).
-2. Search for **"Python: Select Interpreter"**.
-3. Choose the one that starts with **`./venv`** or **`('venv': venv)`**.
-
-
-## 📂 Project Structure
-
-```text
-project-root/
-│
-├── main.py                # The "Brain" - Orchestrates the entire process
-├── .env                   # Configuration & Secrets (URLs, Passwords, Limits)
-├── requirements.txt       # List of required Python libraries
-│
-├── data/                  # Local storage for tracking and results
-│   ├── data.json          # Registry of all found links and upload status
-│   └── raw_news/          # Temporary folder for scraped .txt files
-│
-├── scrapers/              # Web scraping logic
-│   └── news_spider.py     # Scrapy spider to extract article body text
-│
-└── utils/                 # Helper modules (Toolbox)
-    ├── file_manager.py    # Handles folder creation and cleanup
-    ├── readrss.py         # Fetches and parses RSS feeds
-    └── wordpress_api.py   # Handles WordPress login and posting
-
-```
-
----
-
-## 📄 File Descriptions
-
-### 1. `main.py`
-
-This is the entry point of the program. It coordinates the workflow by:
-
-* Loading settings from `.env`.
-* Calling `readrss.py` to find new links.
-* Selecting only **new** links (where `uploaded: false`) up to the `MAX_LINKS` limit.
-* Running the Scraper.
-* Uploading the results to WordPress with a `POST_DELAY` between each post.
-* Updating the `data.json` so the same article is never posted twice.
-
-### 2. `scrapers/news_spider.py`
-
-Powered by the **Scrapy** framework, this script visits the specific news URLs found in the RSS feed.
-
-* **Extraction:** It uses CSS selectors to find the article body (targeting tags like `<p>`, `article`, and common news classes).
-* **Storage:** It saves each article as a `.txt` file in `data/raw_news/`.
-* **Error Handling:** It uses `try...except` blocks to ensure that if one website is down, the entire script doesn't stop.
-
-### 3. `utils/readrss.py`
-
-This module acts as the "Discovery" tool.
-
-* It parses the XML from an RSS feed.
-* It compares found links against `data/data.json`.
-* It adds new links to the registry with a default status of `"uploaded": false`.
-
-### 4. `utils/wordpress_api.py`
-
-This is the communication bridge to your website.
-
-* **Authentication:** Uses **Application Passwords** to log in securely.
-* **Create Post:** Sends a `POST` request to the WordPress REST API with the article title and content.
-* **Session Management:** Keeps the connection open efficiently during the upload process.
-
-### 5. `utils/file_manager.py`
-
-A utility script to keep the workspace clean.
-
-* It ensures the `data/` folders exist before the script starts.
-* It deletes old `.txt` files from the `raw_news/` folder before a new run starts to avoid uploading old data.
-
----
-
-## ⚙️ Configuration (`.env`)
-
-Students must create a `.env` file in the root directory with the following variables:
-
-```ini
-# News Source
-RSS_FEED_URL=https://example.com/rss
-
-# WordPress Credentials
-WORDPRESS_URL=https://your-site.com
-WORDPRESS_USERNAME=your_user
-WORDPRESS_PASSWORD=your_app_password_here
-
-# Automation Settings
-MAX_LINKS=5        # Max articles to process per run
-POST_DELAY=60      # Seconds to wait between posts (60 = 1 minute)
-
-```
-
----
-
-## 🔄 The Data Flow (How it works)
-
-1. **Check:** `readrss.py` looks at the RSS feed and updates `data.json`.
-2. **Filter:** `main.py` looks for `uploaded: false` entries in `data.json`.
-3. **Scrape:** `news_spider.py` visits the links and saves text to `data/raw_news/`.
-4. **Upload:** `wordpress_api.py` sends the text to WordPress.
-5. **Record:** `main.py` changes the status to `uploaded: true` in the registry.
-
----
-
-## 🚀 How to Run
-
-1. Install dependencies: `pip install -r requirements.txt`
-2. Configure your `.env` file.
-3. Run the pipeline: `python main.py`
-
-
 
 # راهنمای فارسی
 
@@ -340,6 +175,174 @@ POST_DELAY=60      # فاصله زمانی بین هر پست به ثانیه (6
 
 
 ---
+
+# English document
+
+This project is a Python-based automation tool that monitors **RSS feeds**, **scrapes** full article content from news websites, and **uploads** the results to a **WordPress** site using the REST API.
+
+## 🛠️ Environment Setup (VS Code)
+
+To ensure the project runs correctly and doesn't interfere with other Python projects on your computer, you should use a **Virtual Environment (venv)**.
+
+### 1. Create the Environment
+
+1. Open your project folder in **VS Code**.
+2. Open the terminal (Press `Ctrl + ` ` or go to **Terminal > New Terminal**).
+3. Type the following command and press Enter:
+```bash
+python -m venv venv
+
+```
+
+
+*This creates a folder named `venv` inside your project.*
+
+### 2. Activate the Environment
+
+You must "enter" the environment so VS Code knows to use it.
+
+* **Windows:**
+```bash
+.\venv\Scripts\activate
+
+```
+
+
+* **Mac/Linux:**
+```bash
+source venv/bin/activate
+
+```
+
+
+
+> **Tip:** If successful, you will see `(venv)` appear in parentheses at the start of your terminal command line.
+
+### 3. Install Requirements
+
+Once the environment is active, install all the necessary libraries defined in `requirements.txt`:
+
+```bash
+pip install -r requirements.txt
+
+```
+
+### 4. Select Interpreter in VS Code
+
+1. Press `Ctrl + Shift + P` (or `Cmd + Shift + P` on Mac).
+2. Search for **"Python: Select Interpreter"**.
+3. Choose the one that starts with **`./venv`** or **`('venv': venv)`**.
+
+
+## 📂 Project Structure
+
+```text
+project-root/
+│
+├── main.py                # The "Brain" - Orchestrates the entire process
+├── .env                   # Configuration & Secrets (URLs, Passwords, Limits)
+├── requirements.txt       # List of required Python libraries
+│
+├── data/                  # Local storage for tracking and results
+│   ├── data.json          # Registry of all found links and upload status
+│   └── raw_news/          # Temporary folder for scraped .txt files
+│
+├── scrapers/              # Web scraping logic
+│   └── news_spider.py     # Scrapy spider to extract article body text
+│
+└── utils/                 # Helper modules (Toolbox)
+    ├── file_manager.py    # Handles folder creation and cleanup
+    ├── readrss.py         # Fetches and parses RSS feeds
+    └── wordpress_api.py   # Handles WordPress login and posting
+
+```
+
+---
+
+## 📄 File Descriptions
+
+### 1. `main.py`
+
+This is the entry point of the program. It coordinates the workflow by:
+
+* Loading settings from `.env`.
+* Calling `readrss.py` to find new links.
+* Selecting only **new** links (where `uploaded: false`) up to the `MAX_LINKS` limit.
+* Running the Scraper.
+* Uploading the results to WordPress with a `POST_DELAY` between each post.
+* Updating the `data.json` so the same article is never posted twice.
+
+### 2. `scrapers/news_spider.py`
+
+Powered by the **Scrapy** framework, this script visits the specific news URLs found in the RSS feed.
+
+* **Extraction:** It uses CSS selectors to find the article body (targeting tags like `<p>`, `article`, and common news classes).
+* **Storage:** It saves each article as a `.txt` file in `data/raw_news/`.
+* **Error Handling:** It uses `try...except` blocks to ensure that if one website is down, the entire script doesn't stop.
+
+### 3. `utils/readrss.py`
+
+This module acts as the "Discovery" tool.
+
+* It parses the XML from an RSS feed.
+* It compares found links against `data/data.json`.
+* It adds new links to the registry with a default status of `"uploaded": false`.
+
+### 4. `utils/wordpress_api.py`
+
+This is the communication bridge to your website.
+
+* **Authentication:** Uses **Application Passwords** to log in securely.
+* **Create Post:** Sends a `POST` request to the WordPress REST API with the article title and content.
+* **Session Management:** Keeps the connection open efficiently during the upload process.
+
+### 5. `utils/file_manager.py`
+
+A utility script to keep the workspace clean.
+
+* It ensures the `data/` folders exist before the script starts.
+* It deletes old `.txt` files from the `raw_news/` folder before a new run starts to avoid uploading old data.
+
+---
+
+## ⚙️ Configuration (`.env`)
+
+Students must create a `.env` file in the root directory with the following variables:
+
+```ini
+# News Source
+RSS_FEED_URL=https://example.com/rss
+
+# WordPress Credentials
+WORDPRESS_URL=https://your-site.com
+WORDPRESS_USERNAME=your_user
+WORDPRESS_PASSWORD=your_app_password_here
+
+# Automation Settings
+MAX_LINKS=5        # Max articles to process per run
+POST_DELAY=60      # Seconds to wait between posts (60 = 1 minute)
+
+```
+
+---
+
+## 🔄 The Data Flow (How it works)
+
+1. **Check:** `readrss.py` looks at the RSS feed and updates `data.json`.
+2. **Filter:** `main.py` looks for `uploaded: false` entries in `data.json`.
+3. **Scrape:** `news_spider.py` visits the links and saves text to `data/raw_news/`.
+4. **Upload:** `wordpress_api.py` sends the text to WordPress.
+5. **Record:** `main.py` changes the status to `uploaded: true` in the registry.
+
+---
+
+## 🚀 How to Run
+
+1. Install dependencies: `pip install -r requirements.txt`
+2. Configure your `.env` file.
+3. Run the pipeline: `python main.py`
+
+
 
 ## 👨‍💻 Developer Information
 

@@ -42,6 +42,7 @@ class NewsSpider(scrapy.Spider):
                     '.primary_inf h1,.primary_inf h2,.primary_inf h3, '
                     '.primary_inf h4,.primary_inf h5,.primary_inf h6,.primary_inf p ,.primary_inf span ,.primary_inf li ,.primary_inf b,.primary_inf strong ,.primary_inf i ,.primary_inf em,'
                     'article h1, article p, .entry-content p,.right_newsinfo'
+                    'main *:not(a),'
                 )
                 content_elements = response.css(content_selector).getall()
                 
