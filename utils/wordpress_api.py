@@ -128,3 +128,13 @@ class WordPressAuth:
             except Exception as e:
                 print(f"⚠️ Error checking duplicate title: {e}")
                 return None
+    def post_exists_by_id(self, article_id):
+        """Check if a post with this numeric ID exists in WordPress (stored in meta field)."""
+        url = f"{self.base_url}/wp-json/wp/v2/posts?meta_key=article_id&meta_value={article_id}&status=any"
+        try:
+            response = self.session.get(url)
+            if response.status_code == 200 and len(response.json()) > 0:
+                return response.json()[0]['id']
+            return None
+        except:
+            return None        

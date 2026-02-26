@@ -8,6 +8,8 @@ from utils.readrss import save_rss_as_json
 from scrapers.news_spider import run_crawler
 from utils.image_processor import download_and_resize_image
 from urllib.parse import unquote
+from utils.file_manager import all_json_uploaded
+
 import re
 def extract_id(url):
     """
@@ -49,6 +51,10 @@ def main():
     # Initialize environment
     ensure_data_dirs(['data', RAW_NEWS_DIR])
     empty_news_folder(RAW_NEWS_DIR)
+    if all_json_uploaded("data/data.json"):
+        if os.path.exists("data/data.json"):
+            os.remove("data/data.json")
+            print("🗑️ data.json deleted.")
     
     # Update local registry with latest RSS entries
     save_rss_as_json(RSS_URL, DATA_JSON)
@@ -72,9 +78,11 @@ def main():
             if len(items_to_process) >= MAX_LINKS:
                 break
             
-            existing_id = wp.post_exists_by_title(item['title'])
+            # Extract the numeric ID from the link
+            article_id = extract_id(item['link'])
+            existing_id = wp.post_exists_by_id(article_id)  # You would need to create this method in wordpress_api.py
+
             if existing_id:
-                print(f"⏭️  Already on site: {item['title'][:40]}... (Marking True)")
                 item['uploaded'] = True
                 item['wp_id'] = existing_id
             else:
@@ -89,6 +97,8 @@ def main():
         if not links_to_scrape:
             print("☕ No new articles found. Everything is up to date.")
             wp.logout()
+            time.sleep(60)  # wait a bit before restarting
+            main()  # restart the whole process
             return
             
         print(f"📡 Scraping {len(links_to_scrape)} new articles...")

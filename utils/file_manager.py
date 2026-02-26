@@ -1,5 +1,6 @@
 import os
 import shutil
+import json
 
 def empty_news_folder(folder_path):
     """
@@ -36,6 +37,29 @@ def ensure_data_dirs(directories):
         if not os.path.exists(directory):
             os.makedirs(directory)
             print(f"📁 Created missing directory: {directory}")
+            
+
+def all_json_uploaded(json_path="data/data.json"):
+    """
+    Checks if all items in the JSON file are uploaded.
+    
+    Returns:
+        True  - if JSON file doesn't exist, can't be opened, or all items are uploaded.
+        False - if at least one item is not uploaded.
+    """
+    # 1. If JSON does not exist, treat as "all uploaded" (safe to recreate)
+    if not os.path.exists(json_path):
+        return True
+
+    try:
+        with open(json_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except (json.JSONDecodeError, ValueError, OSError):
+        # Cannot open or parse JSON → treat as "all uploaded" so we can recreate
+        return True
+
+    # 2. Check if every item has 'uploaded' == True
+    return all(item.get("uploaded") for item in data)
 
 if __name__ == "__main__":
     # Test block
