@@ -38,7 +38,8 @@
         "article_id": "1582943",
         "title": "لحظه ورود ترامپ و ملانیا به کاخ کنگره",
         "link": "https://www.bartarinha.ir/fa/tiny/news-1582943",
-        "uploaded": false
+        "uploaded": true,
+        "wp_id": 11450
     },
     {
         "article_id": "1582944",
@@ -51,7 +52,8 @@
         "article_id": "1582945",
         "title": "کیهان: حضور ناوها ربطی به جنگ با ایران ندارد",
         "link": "https://www.bartarinha.ir/fa/tiny/news-1582945",
-        "uploaded": false
+        "uploaded": true,
+        "wp_id": 11452
     },
     {
         "article_id": "1582946",
@@ -64,13 +66,15 @@
         "article_id": "1582947",
         "title": "فحاشی ترامپ به نمایندگان دموکرات کنگره",
         "link": "https://www.bartarinha.ir/fa/tiny/news-1582947",
-        "uploaded": false
+        "uploaded": true,
+        "wp_id": 11448
     },
     {
         "article_id": "1582948",
         "title": "آگهی عجیب فروش یک بیمارستان در تهران",
         "link": "https://www.bartarinha.ir/fa/tiny/news-1582948",
-        "uploaded": false
+        "uploaded": true,
+        "wp_id": 11454
     },
     {
         "article_id": "1582949",
@@ -352,6 +356,186 @@
         "article_id": "1583127",
         "title": "درخواست کیهان برای تنبیه سخت برخی دانشجویان",
         "link": "https://www.bartarinha.ir/fa/tiny/news-1583127",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583411",
+        "title": "استایل جذاب «راضیه» 10سال بعد از گذر از رنج‌ها در ارمنستان",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583411",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583402",
+        "title": "ماجرای بازگشت بهروز وثوقی و گوگوش از شمال و کتک زدن خبرنگار",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583402",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583409",
+        "title": "شوخی سریال اسباب زحمت با بخش‌های خبری صداوسیما!",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583409",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583392",
+        "title": "آواز خوانیِ آقاخانی، اشک حسن معجونی را درآورد",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583392",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583412",
+        "title": "استوک‌های خبرساز صالح حردانی با پرچم ایران",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583412",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583413",
+        "title": "اصغر خمسه درگذشت",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583413",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583414",
+        "title": "دانشگاه شریف مجبور به عذرخواهی شد",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583414",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583415",
+        "title": "شش کالایی که این روزها تمام ایران مشتری آن هستند!",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583415",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583416",
+        "title": "باد به پرچم آبی می‌وزد؛ قهرمانی استقلال در حال آپلود!",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583416",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583417",
+        "title": "شهاب حسینی پاسخ کیهانِ شریعتمداری را داد",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583417",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583418",
+        "title": "خوراکی‌ها سه‌رقمی شدند، فشار معیشت تشدید شد",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583418",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583419",
+        "title": "طرز تهیه قلیه اسفناج؛ غذای خوشمزه و مقوی",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583419",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583421",
+        "title": "ایتالیا از شهروندانش خواست ایران را ترک کنند",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583421",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583422",
+        "title": "قم برگ برنده جدید مذاکرات ایران و آمریکا شد",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583422",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583425",
+        "title": "چین، آواکس ساخت",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583425",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583426",
+        "title": "این ۱۴ استان منتظر برف و باران باشند",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583426",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583423",
+        "title": "تریتا پارسی، تصمیم قطعی ترامپ درباره ایران را فاش کرد",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583423",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583427",
+        "title": "دستگیری فوتبالیست سابق با ۱۰۷ بسته کوکائین",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583427",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583424",
+        "title": "آخرین مخالف جنگ ایران و آمریکا دیشب اتمام حجت کرد",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583424",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583428",
+        "title": "سقوط هواپیمای حامل اسکناس در بولیوی با چندین کشته",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583428",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583429",
+        "title": "کیهان برای مذاکره با آمریکا نسخه پیچید",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583429",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583430",
+        "title": "تحلیل متن خبرساز شهاب حسینی در پخش زنده صداوسیما",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583430",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583431",
+        "title": "اشکان اشتیاق 27 سال بعد از سریال دنیای شیرین",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583431",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583432",
+        "title": "بی‌رحم‌ترین عروس دهه ۷۰ سعید آقاخانی را زمین زد",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583432",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583433",
+        "title": "دختر کیم جونگ اون در میدان تیر تمرین کرد",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583433",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583434",
+        "title": "هشدار لیندسی گراهام درباره اظهارات مقام عمانی",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583434",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583435",
+        "title": "رایزنی تازه گروسی با هیات آمریکایی درباره ایران",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583435",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583436",
+        "title": "دانشمندان علت «جیغ کشیدن» چسب نواری را کشف کردند",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583436",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583437",
+        "title": "هدف قرار دادن کدام‌ ناو برای ایران آسان‌تر است؟",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583437",
+        "uploaded": false
+    },
+    {
+        "article_id": "1583438",
+        "title": "شنیده شدن صدای سه انفجار شدید در تهران",
+        "link": "https://www.bartarinha.ir/fa/tiny/news-1583438",
         "uploaded": false
     }
 ]
